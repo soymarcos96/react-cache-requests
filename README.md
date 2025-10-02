@@ -27,24 +27,6 @@ Each demo uses the same endpoint (`https://randomuser.me/api/`) to keep outputs 
 
 ---
 
-## Screenshots
-
-> Replace these placeholders with your actual screenshots inside `/assets`.
-
-### Local cache demo
-
-![Local cache demo screenshot](./assets/local-demo.png)
-
-### Global cache demo
-
-![Global cache demo screenshot](./assets/global-demo.png)
-
-### Library demo (SWR / React Query)
-
-![Lib demo screenshot](./assets/lib-demo.png)
-
----
-
 ## How caching works (flow)
 
 Simple flowchart that explains the decision path for "fetch with cache" vs "fetch without cache".
