@@ -1,25 +1,11 @@
 import { useState } from "react";
-import {
-  useQuery,
-  QueryClient,
-  QueryClientProvider,
-} from "@tanstack/react-query";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { useReactQuery } from "../hooks/useReactQuery";
 
 const queryClient = new QueryClient();
 
 // bad practice: should be in .env
 const API_URL = "https://randomuser.me/api/";
-
-const useUsersQuery = () => {
-  return useQuery({
-    queryKey: ["users"],
-    queryFn: async () => {
-      const res = await fetch(API_URL);
-      return res.json();
-    },
-    staleTime: 1000 * 60, // 1 min cache
-  });
-};
 
 //Learning purpose only! this component structure is insane!
 export default function ReactQueryDemo() {
@@ -32,7 +18,7 @@ export default function ReactQueryDemo() {
 
 function Children() {
   const [users, setUsers] = useState([]);
-  const { data, isLoading, error, refetch } = useUsersQuery();
+  const { data, isLoading, error, refetch } = useReactQuery(API_URL);
 
   const fetchWithoutCache = async () => {
     const result = await fetch(API_URL);
