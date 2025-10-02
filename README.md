@@ -15,27 +15,6 @@ The aim is to understand how caching libraries like **React Query** and **SWR** 
 
 ---
 
-## Table of Contents
-
-- [What's inside](#whats-inside)
-- [Screenshots](#screenshots)
-- [How caching works (flow)](#how-caching-works-flow)
-- [Examples / Usage](#examples--usage)
-  - [1 — Local cache (custom hook)](#1---local-cache-custom-hook)
-  - [2 — Global cache (Context API)](#2---global-cache-context-api)
-  - [3 — Using a library (SWR / React Query)](#3---using-a-library-swr--react-query)
-- [Demo UI](#demo-ui)
-- [Tech stack](#tech-stack)
-- [Install & Run](#install--run)
-- [Project structure](#project-structure)
-- [Roadmap](#roadmap)
-- [Contributing](#contributing)
-- [License](#license)
-- [Credits & Acknowledgements](#credits--acknowledgements)
-- [Contact](#contact)
-
----
-
 ## What's inside
 
 This repo contains three minimal demos that illustrate caching approaches:
@@ -72,8 +51,8 @@ Simple flowchart that explains the decision path for "fetch with cache" vs "fetc
 
 ```mermaid
 flowchart TD
-    UI[User clicks button] --> Fetch{Using cache?}
-    Fetch -->|Yes| Cache[Check cache (Map / Context)]
+    UI[User clicks button] --> Fetch{Fetch with cache?}
+    Fetch -->|Yes| Cache[Check local cache]
     Cache -->|Hit| Data[Return cached data]
     Cache -->|Miss| API[Fetch from API]
     API --> Save[Save result in cache]
@@ -81,4 +60,5 @@ flowchart TD
     Fetch -->|No| API2[Fetch directly from API]
     API2 --> Data
     Data --> UIUpdate[Update UI]
+
 ```
